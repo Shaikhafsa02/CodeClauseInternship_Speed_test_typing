@@ -1,0 +1,30 @@
+import time
+
+def speed_typing_test():
+    text = "The quick brown fox jumps over the lazy dog."
+    print("Type the following text:")
+    print(text)
+    input("Press Enter when you're ready...")
+    
+    start_time = time.time()
+    user_input = input()
+    end_time = time.time()
+    
+    elapsed_time = end_time - start_time
+    words = text.split()
+    typed_words = user_input.split()
+    
+    correct_words = 0
+    for expected, typed in zip(words, typed_words):
+        if expected == typed:
+            correct_words += 1
+    
+    accuracy = (correct_words / len(words)) * 100
+    words_per_minute = (len(typed_words) / elapsed_time) * 60
+    
+    print("\nTime elapsed: {:.2f} seconds".format(elapsed_time))
+    print("Accuracy: {:.2f}%".format(accuracy))
+    print("Words per minute: {:.2f}".format(words_per_minute))
+
+if __name__ == "__main__":
+    speed_typing_test()
